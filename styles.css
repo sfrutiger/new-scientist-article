@@ -12,6 +12,10 @@ html {
     font-family: sans-serif;
 }
 
+body {
+    margin: 5px;
+}
+
 p {
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
@@ -34,18 +38,19 @@ figure {
     margin: 0;
 }
 
-.navbar {
+nav {
     width: 100%;
-    height: 40px;
-    position: fixed;
+    height: 50px;
+    position: sticky;
     top: 0;
     width: 100%;
     text-align: center;
     font-size: 40px;
     font-weight: 800;
     background-color: white;
-    padding: 10px;
+    padding: 7px 0 7px 0;
     z-index: 9;
+    /* border-bottom: 2px solid black; */
 }
 
 /*menu icon*/
@@ -89,7 +94,7 @@ figure {
 .right-icons {
     position: absolute;
     top: 10px;
-    right: 50px;
+    right: 10px;
 }
 
 .right-icons * {
@@ -123,24 +128,14 @@ figure {
 }
 
 .wrapper {
-    margin-top: 60px;
+    margin-top: 0;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: 
         "article    article    sidebar"
-        "top-footer top-footer sidebar"
+        "top-footer top-footer .      "
         "more       more       more";
-}
-
-@media only screen and (max-width: 1030px){
-    .wrapper {
-        grid-template-areas: 
-        "article    article    article"
-        "sidebar    sidebar    sidebar"
-        "top-footer top-footer top-footer"
-        "more       more       more";
-    }
 }
 
 .social-icons > button {
@@ -209,24 +204,27 @@ aside {
     max-width: 100%;
     text-align: left;
     list-style: none;
-    counter-reset: li;
+    margin-top: 3px;
+    padding: 0;
+    /* counter-reset: li; */
 }
 
-.sidebar-list > li {
-    width: 100%;
+.sidebar-list li {
     color: var(--text-grey);
     font-size: 20px;
     font-weight: bolder;
     cursor: pointer;
-    height: 2em;
-    background-color: var(--light-grey);
-    
+    padding: .8em;
+    background-color: var(--light-grey); 
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.sidebar-list > li::after {
-    content: counter(li);
-    counter-increment: li;
+.list-number {
+    text-align: right;
     color: var(--light-blue);
+    font-size: 30px;
 }
 
 .sidebar-list > li:hover {
@@ -462,4 +460,69 @@ footer > ul > .last {
 .footer-social-icons > button {
     width: 30px;
     height: 30px;
+}
+
+.copyright {
+    text-align: center;
+    font-size: 14px;
+    font-family: serif;
+    font-weight: lighter;
+    color: grey;
+    padding: 2em;
+}
+
+.top-link {
+    width: 200px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 3em;
+}
+
+.up-arrow {
+    width: 35px;
+    padding-left: 1em;
+}
+
+@media only screen and (max-width: 1030px){
+    .wrapper {
+        grid-template-areas: 
+        "article    article    article"
+        "sidebar    sidebar    sidebar"
+        "top-footer top-footer top-footer"
+        "more       more       more";
+    }
+}
+
+@media only screen and (min-width: 1030px){
+    .sidebar-content {
+        position: sticky;
+    top: 70px;
+    }
+
+    .footer-bottom {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+
+    .top-link {
+        padding: 0;
+        margin-left: 0;
+        transform: none;
+    }
+
+    .email-sign-up {
+        width: auto;
+        display: inline-block;
+        margin-right: 1em;
+    }
+
+    .sign-up-button {
+        display: inline-block;
+    }
 }
